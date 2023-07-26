@@ -1,4 +1,4 @@
-# workflow.template.pacta
+# workflow.ca100.analysis
 This repository can be used as a template for all PACTA workflow repositories. It includes typical workflow scaffolding, and an explanation of good practices for developing a workflow.
 
 ## How to use this template
