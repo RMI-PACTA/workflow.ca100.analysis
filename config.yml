@@ -1,0 +1,72 @@
+default:
+  data_prep_inputs_path: "/inputs"
+  data_prep_outputs_path: "/outputs"
+  masterdata_ownership_filename: ""
+  masterdata_debt_filename: ""
+  ar_company_id__factset_entity_id_filename: ""
+  dbname: "delta"
+  host: "data-eval-db.postgres.database.azure.com"
+  update_factset: TRUE
+  update_currencies: TRUE
+  export_sqlite_files: FALSE
+  imf_quarter_timestamp: "2021-Q4"
+  factset_data_timestamp: "2021-12-31"
+  pacta_financial_timestamp: "2021Q4"
+  market_share_target_reference_year: 2022
+  time_horizon: 5
+  tdm_delta_years: [5, 9]
+  scenario_sources_list: ["ETP2020", "GECO2021", "IPR2021", "ISF2021", "WEO2021"]
+  sector_list: ["Automotive", "Power", "Fossil Fuels", "Oil&Gas", "Coal", "HDV"]
+  other_sector_list: ["Steel", "Aviation", "Cement"]
+  zero_emission_factor_techs: ["Electric", "HydroCap", "NuclearCap", "RenewablesCap"]
+  green_techs: ["FuelCell", "Electric", "Hybrid", "RenewablesCap", "HydroCap", "NuclearCap", "FuelCell_HDV", "Electric_HDV"]
+  scenario_raw_data_to_include: ["etp_2020", "geco_2021", "ipr_2021", "isf_2021", "weo_2021"]
+  tech_exclude: ["OtherCap", "OtherFF", "Coking Plant", "Sintering Plant", "Direct Or Smelting Reduction Plant", "Pelletizing Plant", "Grinding Plant", "Passenger / Freight"]
+  scenario_geographies_list: ["Global", "NonOECD", "OECD"]
+  global_aggregate_scenario_sources_list: ["ETP2020", "GECO2021", "IPR2021", "ISF2021", "WEO2021"]
+  global_aggregate_sector_list: ["Power"]
+  scenario_source_agg_score: "NZE_2021"
+  scenario_agg_score: "NZE_2050"
+  scenario_source_agg_score_auto: "NZE_2021"
+  scenario_agg_score_auto: "NZE_2050"
+  scenario_source_agg_score_hdv: "ETP2017"
+  scenario_agg_score_hdv: "B2DS"
+  Brown.Techs: ["ICE","CoalCap","GasCap","OilCap"]
+  Most.Relevant.Techs: ["ICE","CoalCap","RenewablesCap","Electric", "ICE_HDV", "Electric_HDV"]
+  Other.Relevant.Techs: ["NuclearCap","HydroCap", "GasCap"]
+
+2022Q2:
+  masterdata_ownership_filename: "2022-08-30_rmi_masterdata_ownership_2022q2.csv"
+  ar_company_id__factset_entity_id_filename: "2023-02-15_AI_RMI_Bespoke_Company_Data_Products_Company_ID_List_2022Q4.csv"
+  market_share_target_reference_year: 2022
+  tdm_delta_years: [5, 8]
+  scenario_sources_list: ["WEO2022", "ETP2017"]
+  scenario_raw_data_to_include: ["weo_2022"]
+  global_aggregate_scenario_sources_list: [""]
+  zero_emission_factor_techs: ["Electric", "RenewablesCap"]
+  green_techs: ["FuelCell", "Electric", "RenewablesCap", "FuelCell_HDV", "Electric_HDV", "Hybrid_HDV"]
+  scenario_source_agg_score: "WEO2022"
+  scenario_agg_score: "NZE_2050"
+  scenario_source_agg_score_auto: "WEO2022"
+  scenario_agg_score_auto: "NZE_2050"
+  scenario_source_agg_score_hdv: "ETP2017"
+  scenario_agg_score_hdv: "B2DS"
+
+
+2023Q2:
+  masterdata_ownership_filename: "2023-08-14_AI_RMI Bespoke_Company Data Products_masterdata_ownership_2023Q2.csv"
+  ar_company_id__factset_entity_id_filename: "2023-02-15_AI_RMI_Bespoke_Company_Data_Products_Company_ID_List_2022Q4.csv"
+  market_share_target_reference_year: 2023
+  tdm_delta_years: [5, 8]
+  scenario_sources_list: ["WEO2022", "ETP2017"]
+  scenario_raw_data_to_include: ["weo_2022"]
+  global_aggregate_scenario_sources_list: [""]
+  zero_emission_factor_techs: ["Electric", "RenewablesCap"]
+  green_techs: ["FuelCell", "Electric", "RenewablesCap", "FuelCell_HDV", "Electric_HDV", "Hybrid_HDV"]
+  scenario_source_agg_score: "WEO2022"
+  scenario_agg_score: "NZE_2050"
+  scenario_source_agg_score_auto: "WEO2022"
+  scenario_agg_score_auto: "NZE_2050"
+  scenario_source_agg_score_hdv: "ETP2017"
+  scenario_agg_score_hdv: "B2DS"
+

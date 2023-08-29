@@ -1,77 +1,31 @@
 # workflow.ca100.analysis
-This repository can be used as a template for all PACTA workflow repositories. It includes typical workflow scaffolding, and an explanation of good practices for developing a workflow.
+This repository serves for CA100 analysis. We deliver once a year around September to CA100 indicators at company level. 
+Indicators includes 
+* aggregate scores for Power and Automotive sectors
+* traffic lights for build out for each technology for Power and Automotive sectors
+* emission intensity assessment for aviation, steel and cement
 
-## How to use this template
+## How to use this workflow
 
-When you are starting a new workflow, you may choose to: 
-* Click "New Repository" on GitHub
-* Select this repository as a "template"
+You first need to create a .env text file with the following variable:
 
-After this, you should submit a PR that changes the names in the following files to suit the name of your new repository:
-* `*.Rproj` file
-* `README.md`
+R_CONFIG_ACTIVE="2022Q2"
+DATA_STORE_PATH="path/to/AI/data"
+OUTPUT_DIR="path/where/we/want/to/save/results"
+ETP_PATHWAY="path/to/collect/etp/hdv/scenarios"
+TEMPLATE_DIR="path/to/raw/results/template"
+LAST_FILE_USED="path/to/old/ca100/results"
 
-You can then begin to work on your workflow using the `demo.R` file as a basis, and document how to run the workflow using the `README.md`.
+LAST_FILE_USED allows us to reuse 2019 results for Aviation. It's deprecated with last release but still possible to do uncommenting corresponding lines in CA100_assemble.R
 
-## Guidelines for writing a reproducible workflow (WIP)
+If you run it for a new timestamp, you need to add it in config.yml file.
 
-These are a handful of guidelines for some best practices in developing a reproducible workflow repository. Please consider this when writing one yourself!
+Then you first need to run prepare_CA100_analysis_file.R
+It will create the files you need to run the analysis from AI input.
+The output will look like the one we have when running pacta.data.preparation but you need to run it from here because we consider Hybrid, HydroCap and NuclearCap as brown technology. This is because for some companies, it doesn't make sense to ask them to build out some hydro or nuclear capacities. (for example pure renewables player).
 
+You then need to run CA100_aggregate_score.R, CA100_Trajectory.R and CA100_Emission_Intensity.R
 
-### Consider Logically Separating Your Code into the "Data Science Pipeline"
+Each of those file will create an output, that is a csv file with the raw results.
 
-A good way to keep your scripts organized is to think about them in terms of the "data science pipeline". It structures a typical data analysis path as follows:
-
-* Import
-* Tidy
-* Do the following iteratively:
-  * Transform
-  * Visualize
-  * Model
-* Communicate (when you are happy with the output)
-
-In the `tidyverse`, there are individual packages that can help you with each step of this process:
-
-[<img src="https://teachdatascience.com/post/tidyverse/tidyverse-package-workflow.png">](http://google.com.au/)
-
-
-
-### Version Control
-Don't commit data or other sensitive information to version control. Data should be written to and read from an external source
-
-### Organize Your Project:
-
-Create a clear folder structure for your project. Separate code (which can live in this repository) from outputs like: data, figures, and reports.
-
-Consider using R projects (.Rproj) for a more organized environment.
-
-### Manage Dependencies:
-
-At the beginning of your script, explicitly state all required R packages and their versions. You can use, for example, the renv package to manage package dependencies.
-
-Always try to keep dependencies to a minimum, and remove those that are unused.
-
-### Always Manipulate Data Through a `.R` or `.Rmd` File!
-
-If you want to be truly reproducible, then STOP OPENING EXCEL!
-
-
-### Use External Config Files
-
-Store parameters, configurations, or settings in separate config files (e.g., a `config.yml` or `.env`) for easy modification without altering the code. 
-
-It is a good idea to document paths here, for example. 
-
-
-### Clean Output:
-
-Remove unnecessary or temporary files and folders from your script's output to keep things tidy.
-
-
-### Create an R Script for Data Downloading:
-
-If your analysis relies on external data sources, create a separate R script to download and prepare the data automatically.
-
-### Reproducibility Checklist:
-
-Develop a checklist to verify that your script meets all reproducibility requirements before sharing it.
+Finally we need to run CA100_assemble.R to assemble all the results in the xlsx file. 
