@@ -1,4 +1,9 @@
 # workflow.ca100.analysis
+
+[![Project Status: Unsupported](https://www.repostatus.org/badges/latest/unsupported.svg)](https://www.repostatus.org/#unsupported)
+
+**This project is archived for future reference, but no new work is expected in this repository.**
+
 This repository serves for CA100 analysis. We deliver once a year around September to CA100 indicators at company level. 
 Indicators includes 
 * aggregate scores for Power and Automotive sectors
@@ -28,4 +33,4 @@ You then need to run CA100_aggregate_score.R, CA100_Trajectory.R and CA100_Emiss
 
 Each of those file will create an output, that is a csv file with the raw results.
 
-Finally we need to run CA100_assemble.R to assemble all the results in the xlsx file. 
+Finally we need to run CA100_assemble.R to assemble all the results in the xlsx file.
